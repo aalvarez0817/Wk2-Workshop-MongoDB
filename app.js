@@ -52,6 +52,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
+app.use(express.static(path.join(__dirname, 'public'))); // becomes accessible by moving before passport.
 
 app.use(passport.initialize());
 
@@ -59,7 +60,6 @@ app.use(passport.initialize());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);
